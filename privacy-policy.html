@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy Policy • Smoke Recipes</title>
+  <meta name="description" content="Privacy Policy for Smoke Recipes" />
+  <style>
+    :root{
+      --bg:#0b0f19; --panel:rgba(255,255,255,.06); --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.68); --border:rgba(255,255,255,.12); --accent:#ff6400;
+      --shadow:0 20px 60px rgba(0,0,0,.45); --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(255,100,0,.35), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(255,179,138,.22), transparent 55%),
+        radial-gradient(700px 500px at 60% 120%, rgba(99,102,241,.18), transparent 60%),
+        var(--bg);
+      min-height:100vh;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:900px; margin:0 auto; padding:28px 18px 50px}
+    .nav{
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      border:1px solid var(--border); background:rgba(0,0,0,.25); backdrop-filter: blur(10px);
+      border-radius:999px; padding:14px 16px;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900}
+    .logo{
+      width:36px; height:36px; border-radius:12px;
+      background: linear-gradient(135deg, var(--accent), #ff2d55);
+      display:grid; place-items:center;
+      box-shadow: 0 10px 20px rgba(255,100,0,.25);
+    }
+    .btn{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      padding:10px 14px; border-radius:999px;
+      font-weight:800; color:var(--text);
+    }
+    .btn:hover{background:rgba(255,255,255,.10)}
+    .card{
+      margin-top:18px;
+      border:1px solid var(--border);
+      background:var(--panel);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    h1{margin:0 0 10px; font-size: clamp(28px, 4vw, 40px); letter-spacing:-.6px}
+    h2{margin:20px 0 8px; font-size:18px}
+    p, li{color:var(--muted); line-height:1.8}
+    ul{margin:10px 0 0; padding-left:18px}
+    .note{border:1px solid var(--border); background:rgba(255,255,255,.06); padding:12px 14px; border-radius:14px; color:var(--muted)}
+    footer{margin-top:16px; text-align:center; color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <div style="line-height:1">Smoke Recipes</div>
+          <div style="font-size:12px; color:var(--muted); font-weight:800">Fast • Bold • Smoky</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center">
+        <a class="btn" href="index.html">← Home</a>
+        <a class="btn" href="https://smokerecipes.com" target="_blank" rel="noopener">Main site ↗</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h1>Privacy Policy</h1>
+      <p class="note">
+        This is a simple starter privacy policy for a small recipe website. If you run ads, email lists, analytics,
+        or sell products, you should update this to match what you actually do.
+      </p>
+
+      <h2>Information we collect</h2>
+      <ul>
+        <li><b>Basic usage data</b> (like pages viewed) if you use analytics.</li>
+        <li><b>Contact info</b> if you email us or join a newsletter.</li>
+        <li><b>Cookies</b> if your site uses them (ads/analytics/login).</li>
+      </ul>
+
+      <h2>How we use information</h2>
+      <ul>
+        <li>To improve content and site performance</li>
+        <li>To respond to messages and support requests</li>
+        <li>To measure traffic and understand what recipes people like</li>
+      </ul>
+
+      <h2>Third-party services</h2>
+      <p>
+        We may use third-party tools (for example: analytics, ads, or embedded content).
+        These services may collect data according to their own policies.
+      </p>
+
+      <h2>Your choices</h2>
+      <ul>
+        <li>You can disable cookies in your browser settings.</li>
+        <li>You can unsubscribe from emails at any time (if you use a newsletter).</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>
+        If you have questions, contact us via the main website.
+      </p>
+
+      <p style="margin-top:18px; color:var(--muted); font-weight:700">Last updated: <span id="d"></span></p>
+    </div>
+
+    <footer>© <span id="y"></span> Smoke Recipes</footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+    document.getElementById("d").textContent = new Date().toLocaleDateString();
+  </script>
+</body>
+</html>
