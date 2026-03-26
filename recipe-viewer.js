@@ -171,7 +171,7 @@
     return { section, heading };
   }
 
-  function buildHero(title, heroImage, intro, facts, fileName){
+  function buildHero(title, heroImage, intro, facts){
     const section = createElement("section", "hero-card");
     const copy = createElement("div", "hero-copy");
     const kicker = createElement("div", "hero-kicker", "Smoke Recipes Article");
@@ -190,14 +190,7 @@
       meta.appendChild(createElement("span", "hero-chip", fact));
     });
 
-    const actions = createElement("div", "hero-actions");
-    const jump = createElement("a", "action-btn primary", "Start reading");
-    jump.href = "#article-content";
-    const source = createElement("a", "action-btn secondary", "Open source file");
-    source.href = fileName;
-    actions.append(jump, source);
-
-    copy.append(meta, actions);
+    copy.appendChild(meta);
 
     const visual = createElement("figure", "hero-visual");
     if(heroImage && heroImage.querySelector("img")){
@@ -228,6 +221,22 @@
       `${sectionCount || 0} sections`,
       `${faqCount || 0} FAQs`
     ];
+  }
+
+  function nextMeaningfulNode(nodes, startIndex){
+    for(let index = startIndex; index < nodes.length; index += 1){
+      const node = nodes[index];
+      if(!node || !node.tagName){
+        continue;
+      }
+
+      const text = (node.textContent || "").trim();
+      if(node.tagName === "FIGURE" || text){
+        return node;
+      }
+    }
+
+    return null;
   }
 
   function buildArticle(nodes){
@@ -307,6 +316,11 @@
       const target = currentSection || body;
 
       if(node.tagName === "FIGURE"){
+        const nextNode = nextMeaningfulNode(nodes, index + 1);
+        if(nextNode && nextNode.tagName === "H3" && /a note from my kitchen/i.test(nextNode.textContent.trim())){
+          continue;
+        }
+
         const image = node.querySelector("img");
         if(image){
           const figure = createElement("figure", "story-image");
@@ -401,7 +415,7 @@
       document.title = `${title} | Smoke Recipes`;
 
       const page = createElement("article", "recipe-page");
-      page.appendChild(buildHero(title, heroImage, intro, facts, fileName));
+      page.appendChild(buildHero(title, heroImage, intro, facts));
 
       const article = buildArticle(remaining);
       page.appendChild(article.wrapper);
