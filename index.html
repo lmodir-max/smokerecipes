@@ -487,11 +487,28 @@
       return "";
     }
 
+    async function latestCommitDateFor(fileName){
+      try{
+        const api = `https://api.github.com/repos/${OWNER}/${REPO}/commits?path=${encodeURIComponent(fileName)}&per_page=1`;
+        const res = await fetch(api, { headers: { "Accept":"application/vnd.github+json" }});
+        if(!res.ok) return 0;
+        const data = await res.json();
+        const iso = data[0]?.commit?.committer?.date || data[0]?.commit?.author?.date || "";
+        const stamp = Date.parse(iso);
+        return Number.isFinite(stamp) ? stamp : 0;
+      }catch(_err){
+        return 0;
+      }
+    }
+
     async function articleCardDataFor(fileName){
       try{
-        const res = await fetch(fileName, { cache: "no-store" });
+        const [updatedAt, res] = await Promise.all([
+          latestCommitDateFor(fileName),
+          fetch(fileName, { cache: "no-store" })
+        ]);
         if(!res.ok){
-          return { fileName, imageSrc: "", href: recipeHref(fileName), metaText: "Open styled recipe view" };
+          return { fileName, imageSrc: "", href: recipeHref(fileName), metaText: "Open styled recipe view", sortTime: updatedAt };
         }
         const html = await res.text();
         const doc = new DOMParser().parseFromString(html, "text/html");
@@ -501,10 +518,11 @@
           fileName,
           imageSrc,
           href: redirectTarget ? fileName : recipeHref(fileName),
-          metaText: redirectTarget ? "View recipe" : "Open styled recipe view"
+          metaText: redirectTarget ? "View recipe" : "Open styled recipe view",
+          sortTime: updatedAt
         };
       }catch(_err){
-        return { fileName, imageSrc: "", href: recipeHref(fileName), metaText: "Open styled recipe view" };
+        return { fileName, imageSrc: "", href: recipeHref(fileName), metaText: "Open styled recipe view", sortTime: 0 };
       }
     }
 
@@ -585,8 +603,7 @@
         const htmlFiles = data
           .filter(x => x.type === "file" && /\.html$/i.test(x.name))
           .map(x => x.name)
-          .filter(name => !EXCLUDE.has(name))
-          .sort((a,b) => a.localeCompare(b));
+          .filter(name => !EXCLUDE.has(name));
 
         if(htmlFiles.length === 0){
           grid.innerHTML = `
@@ -601,6 +618,7 @@
         const cards = await Promise.all(
           htmlFiles.map((fileName) => articleCardDataFor(fileName))
         );
+        cards.sort((a, b) => (b.sortTime - a.sortTime) || a.fileName.localeCompare(b.fileName));
         const totalPages = Math.max(1, Math.ceil(cards.length / PAGE_SIZE));
         const page = currentPage(totalPages);
         const start = (page - 1) * PAGE_SIZE;
