@@ -1,0 +1,687 @@
+:root{
+  --bg:#16100b;
+  --bg-soft:#241912;
+  --paper:#fff7ec;
+  --paper-strong:#fffdf9;
+  --ink:#2d1e14;
+  --ink-soft:#705342;
+  --line:rgba(61,34,18,.16);
+  --accent:#ff6a00;
+  --accent-deep:#d94a0f;
+  --accent-soft:#ffd8bf;
+  --shadow:0 24px 70px rgba(0,0,0,.22);
+  --radius:28px;
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  color:#fdf2e8;
+  background:
+    radial-gradient(1100px 540px at 15% -10%, rgba(255,106,0,.34), transparent 60%),
+    radial-gradient(860px 460px at 95% 8%, rgba(255,185,120,.18), transparent 58%),
+    radial-gradient(900px 500px at 50% 100%, rgba(103,58,29,.34), transparent 62%),
+    linear-gradient(180deg, #130d08 0%, #1b120d 46%, #261912 100%);
+  font-family:"Aptos","Segoe UI",sans-serif;
+  min-height:100vh;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+img{
+  display:block;
+  max-width:100%;
+}
+
+.page-shell{
+  width:min(1280px, calc(100% - 28px));
+  margin:0 auto;
+  padding:22px 0 48px;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:14px 18px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:999px;
+  background:rgba(17,11,8,.58);
+  backdrop-filter:blur(18px);
+  box-shadow:0 18px 44px rgba(0,0,0,.22);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+
+.brand-mark{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  color:#fff7ef;
+  font-weight:900;
+  background:linear-gradient(135deg, var(--accent), #ff9750);
+  box-shadow:0 14px 26px rgba(255,106,0,.26);
+}
+
+.brand-copy{
+  display:grid;
+  gap:2px;
+}
+
+.brand-copy strong{
+  font-size:14px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.brand-copy span{
+  color:rgba(255,242,232,.76);
+  font-size:13px;
+}
+
+.topbar-links{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.topbar-links a{
+  padding:10px 14px;
+  border-radius:999px;
+  color:rgba(255,242,232,.84);
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04);
+  font-weight:700;
+}
+
+.topbar-links a:hover{
+  background:rgba(255,255,255,.1);
+}
+
+.reader-state{
+  margin-top:22px;
+}
+
+.state-card{
+  padding:34px;
+  border-radius:var(--radius);
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,249,243,.08);
+  box-shadow:0 18px 50px rgba(0,0,0,.18);
+}
+
+.state-card h1{
+  margin:8px 0 10px;
+  font:700 clamp(2.2rem, 4vw, 3.6rem) / .98 "Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+  letter-spacing:-.03em;
+}
+
+.state-card p{
+  margin:0;
+  color:rgba(255,242,232,.82);
+  line-height:1.7;
+}
+
+.eyebrow{
+  margin:0;
+  color:#ffbf90;
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.recipe-page{
+  display:grid;
+  gap:24px;
+  margin-top:22px;
+  animation:rise .55s ease-out both;
+}
+
+.hero-card{
+  display:grid;
+  grid-template-columns:minmax(0, 1.15fr) minmax(320px, .85fr);
+  gap:24px;
+  padding:28px;
+  border-radius:36px;
+  color:var(--ink);
+  background:
+    linear-gradient(145deg, rgba(255,249,241,.96), rgba(255,240,224,.94)),
+    var(--paper);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  position:relative;
+}
+
+.hero-card::before{
+  content:"";
+  position:absolute;
+  inset:auto -120px -140px auto;
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,106,0,.18), transparent 68%);
+  pointer-events:none;
+}
+
+.hero-copy{
+  position:relative;
+  z-index:1;
+}
+
+.hero-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:#fff3e4;
+  border:1px solid rgba(217,74,15,.12);
+  color:var(--accent-deep);
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.hero-kicker::before{
+  content:"";
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 7px rgba(255,106,0,.12);
+}
+
+.hero-title{
+  margin:18px 0 14px;
+  font:700 clamp(2.7rem, 5vw, 4.7rem) / .92 "Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+  letter-spacing:-.04em;
+  max-width:11ch;
+}
+
+.hero-summary{
+  margin:0;
+  max-width:60ch;
+  color:var(--ink-soft);
+  font-size:1.02rem;
+  line-height:1.8;
+}
+
+.hero-summary + .hero-summary{
+  margin-top:12px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+
+.action-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:13px 18px;
+  border-radius:999px;
+  font-weight:800;
+  border:1px solid rgba(61,34,18,.12);
+}
+
+.action-btn.primary{
+  color:#fff8f1;
+  background:linear-gradient(135deg, var(--accent), #ff8b3d);
+  box-shadow:0 18px 30px rgba(255,106,0,.2);
+  border:none;
+}
+
+.action-btn.secondary{
+  color:var(--ink);
+  background:#fff7ef;
+}
+
+.hero-meta{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.hero-chip{
+  padding:8px 12px;
+  border-radius:999px;
+  background:#fff8f1;
+  border:1px solid rgba(61,34,18,.1);
+  color:var(--ink-soft);
+  font-weight:700;
+  font-size:.92rem;
+}
+
+.hero-visual{
+  position:relative;
+  min-height:420px;
+  border-radius:30px;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg, rgba(25,17,12,.1), rgba(25,17,12,.36)),
+    linear-gradient(140deg, #ffddb9, #fbb06f);
+  box-shadow:0 20px 46px rgba(0,0,0,.16);
+}
+
+.hero-visual img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero-visual .image-fallback{
+  width:100%;
+  height:100%;
+  display:grid;
+  place-items:center;
+  color:rgba(255,255,255,.86);
+  font:700 2.4rem / 1 "Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.18), transparent 26%),
+    radial-gradient(circle at 75% 25%, rgba(255,255,255,.14), transparent 28%),
+    linear-gradient(135deg, #ff7c2f, #be3f0c);
+}
+
+.hero-caption{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:18px;
+  padding:14px 16px;
+  border-radius:18px;
+  color:#fff7ee;
+  background:rgba(20,13,9,.52);
+  backdrop-filter:blur(8px);
+  font-size:.95rem;
+  line-height:1.55;
+}
+
+.content-grid{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) 320px;
+  gap:24px;
+  align-items:start;
+}
+
+.article-surface{
+  padding:34px clamp(20px, 3vw, 42px);
+  border-radius:34px;
+  background:linear-gradient(180deg, rgba(255,253,249,.98), rgba(255,246,234,.98));
+  color:var(--ink);
+  box-shadow:var(--shadow);
+}
+
+.article-body{
+  max-width:760px;
+}
+
+.article-body p,
+.article-body li,
+.article-body .rank-math-answer,
+.summary-copy{
+  font-size:1.04rem;
+  line-height:1.9;
+  color:var(--ink-soft);
+}
+
+.article-body p{
+  margin:0 0 18px;
+}
+
+.article-body a{
+  color:var(--accent-deep);
+  text-decoration:underline;
+  text-decoration-thickness:1.2px;
+  text-underline-offset:3px;
+}
+
+.article-section{
+  margin-top:42px;
+  scroll-margin-top:120px;
+}
+
+.article-section:first-child{
+  margin-top:0;
+}
+
+.article-section h2{
+  margin:0 0 16px;
+  font:700 clamp(2rem, 4vw, 2.9rem) / 1.02 "Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+  letter-spacing:-.03em;
+}
+
+.article-body h3{
+  margin:28px 0 12px;
+  font:700 clamp(1.42rem, 2.7vw, 1.86rem) / 1.1 "Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+  letter-spacing:-.02em;
+}
+
+.story-image{
+  margin:26px 0;
+}
+
+.story-image img{
+  width:100%;
+  border-radius:26px;
+  box-shadow:0 18px 44px rgba(42,26,15,.13);
+}
+
+.summary-card,
+.note-card,
+.closing-card,
+.info-card,
+.toc-card{
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:var(--paper-strong);
+  box-shadow:0 18px 40px rgba(53,27,12,.08);
+}
+
+.summary-card{
+  padding:28px;
+  background:
+    radial-gradient(340px 180px at 100% 0%, rgba(255,106,0,.09), transparent 70%),
+    var(--paper-strong);
+}
+
+.summary-grid{
+  display:grid;
+  gap:14px;
+  margin-top:20px;
+}
+
+.summary-item{
+  display:grid;
+  grid-template-columns:48px minmax(0, 1fr);
+  gap:14px;
+  align-items:start;
+  padding:16px;
+  border-radius:22px;
+  background:#fff7ed;
+  border:1px solid rgba(217,74,15,.09);
+}
+
+.summary-icon{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  color:#fff6ee;
+  background:linear-gradient(135deg, var(--accent), #ff9553);
+  box-shadow:0 12px 24px rgba(255,106,0,.16);
+}
+
+.summary-icon svg{
+  width:22px;
+  height:22px;
+}
+
+.summary-copy{
+  margin:0;
+}
+
+.note-card,
+.closing-card{
+  padding:28px;
+  margin-top:26px;
+}
+
+.note-card{
+  background:
+    linear-gradient(135deg, rgba(255,106,0,.08), rgba(255,255,255,.85)),
+    var(--paper-strong);
+}
+
+.closing-card{
+  background:
+    linear-gradient(145deg, rgba(255,223,193,.62), rgba(255,255,255,.96)),
+    var(--paper-strong);
+}
+
+.tip-box{
+  margin:26px 0;
+  padding:18px 20px;
+  border-left:6px solid var(--accent);
+  border-radius:20px;
+  background:#fff0e2;
+  color:var(--ink);
+  box-shadow:0 16px 34px rgba(53,27,12,.06);
+}
+
+.article-body ul,
+.article-body ol{
+  margin:0 0 24px;
+  padding-left:24px;
+}
+
+.article-body li{
+  margin-bottom:14px;
+}
+
+.step-card{
+  margin:18px 0;
+  padding:18px 20px;
+  border-radius:22px;
+  border:1px solid rgba(61,34,18,.08);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,248,238,.96)),
+    var(--paper-strong);
+  box-shadow:0 16px 32px rgba(53,27,12,.05);
+}
+
+.step-card p{
+  margin:0;
+}
+
+.step-card strong{
+  color:var(--ink);
+}
+
+.faq-list{
+  display:grid;
+  gap:14px;
+  margin-top:10px;
+}
+
+.faq-item{
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:var(--paper-strong);
+  overflow:hidden;
+}
+
+.faq-item summary{
+  cursor:pointer;
+  list-style:none;
+  padding:18px 20px;
+  font:700 1.05rem / 1.5 "Aptos","Segoe UI",sans-serif;
+  color:var(--ink);
+}
+
+.faq-item summary::-webkit-details-marker{
+  display:none;
+}
+
+.faq-item summary::after{
+  content:"+";
+  float:right;
+  color:var(--accent);
+  font-size:1.4rem;
+  line-height:1;
+}
+
+.faq-item[open] summary::after{
+  content:"-";
+}
+
+.faq-answer{
+  padding:0 20px 18px;
+}
+
+.sidebar-stack{
+  position:sticky;
+  top:22px;
+  display:grid;
+  gap:16px;
+}
+
+.info-card,
+.toc-card{
+  padding:22px;
+  color:#fff6ed;
+  background:
+    linear-gradient(180deg, rgba(31,20,14,.94), rgba(18,12,9,.96)),
+    #1a120d;
+  border-color:rgba(255,255,255,.08);
+  box-shadow:0 20px 46px rgba(0,0,0,.2);
+}
+
+.info-card h2,
+.toc-card h2{
+  margin:0 0 16px;
+  font:700 1.3rem / 1.1 "Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+}
+
+.facts{
+  display:grid;
+  gap:12px;
+}
+
+.fact{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:12px 14px;
+  border-radius:18px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.fact span{
+  color:rgba(255,242,232,.7);
+  font-weight:700;
+}
+
+.fact strong{
+  color:#fff8ef;
+}
+
+.toc-list{
+  display:grid;
+  gap:10px;
+}
+
+.toc-list a{
+  padding:10px 12px;
+  border-radius:16px;
+  color:rgba(255,242,232,.8);
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.04);
+  font-weight:700;
+}
+
+.toc-list a:hover,
+.toc-list a.active{
+  color:#fff8ef;
+  background:rgba(255,255,255,.1);
+}
+
+.hidden-node{
+  display:none;
+}
+
+@keyframes rise{
+  from{
+    opacity:0;
+    transform:translateY(16px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+@media (max-width: 1040px){
+  .content-grid{
+    grid-template-columns:1fr;
+  }
+
+  .sidebar-stack{
+    position:static;
+  }
+}
+
+@media (max-width: 900px){
+  .hero-card{
+    grid-template-columns:1fr;
+    padding:22px;
+    border-radius:30px;
+  }
+
+  .hero-visual{
+    min-height:300px;
+    order:-1;
+  }
+
+  .hero-title{
+    max-width:none;
+  }
+}
+
+@media (max-width: 640px){
+  .page-shell{
+    width:min(100% - 18px, 1280px);
+    padding-top:14px;
+  }
+
+  .topbar{
+    border-radius:24px;
+    padding:14px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .topbar-links{
+    width:100%;
+    flex-wrap:wrap;
+  }
+
+  .topbar-links a{
+    flex:1 1 140px;
+    text-align:center;
+  }
+
+  .article-surface{
+    padding:24px 18px;
+    border-radius:28px;
+  }
+
+  .summary-card,
+  .note-card,
+  .closing-card,
+  .info-card,
+  .toc-card{
+    border-radius:22px;
+  }
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recipe Reader | Smoke Recipes</title>
+  <meta name="description" content="Styled recipe reader for Smoke Recipes articles." />
+  <link rel="stylesheet" href="recipe-viewer.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">S</span>
+        <span class="brand-copy">
+          <strong>Smoke Recipes</strong>
+          <span>Styled recipe reader</span>
+        </span>
+      </a>
+      <nav class="topbar-links">
+        <a href="index.html#recipes">All recipes</a>
+        <a href="https://smokerecipes.com" target="_blank" rel="noopener">Main site</a>
+      </nav>
+    </header>
+
+    <main id="app" class="reader-state" aria-live="polite">
+      <section class="state-card">
+        <p class="eyebrow">Preparing article</p>
+        <h1>Loading recipe</h1>
+        <p>The viewer is fetching the untouched source file and rebuilding it into the on-site article layout.</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="recipe-viewer.js"></script>
+</body>
+</html>
